@@ -7,12 +7,12 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/invoice-app/browser",
+        "browser": "apps/invoice-app/src/main.ts",
+        "outputPath": "dist/apps/invoice-app",
         "index": "apps/invoice-app/src/index.html",
-        "main": "apps/invoice-app/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/invoice-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
@@ -45,9 +45,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -98,7 +96,7 @@
         "outputPath": "dist/apps/invoice-app/server",
         "main": "apps/invoice-app/src/server.ts",
         "tsConfig": "apps/invoice-app/tsconfig.server.json",
-        "inlineStyleLanguage": "scss"
+        "inlineStyleLanguage": "css"
       },
       "configurations": {
         "production": {
