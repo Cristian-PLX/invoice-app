@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@org/styles": ["apps/libs/styles/src/index.ts"]
+      "@org/core": ["apps/libs/core/src/index.ts"],
+      "@org/data-access": ["apps/libs/data-access/src/index.ts"],
+      "@org/styles": ["apps/libs/styles/src/index.ts"],
+      "@org/ui": ["apps/libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
