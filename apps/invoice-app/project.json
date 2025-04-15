@@ -20,6 +20,11 @@
           {
             "glob": "**/*",
             "input": "apps/invoice-app/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "apps/invoice-app/src/assets",
+            "output": "assets"
           }
         ],
         "styles": ["apps/invoice-app/src/styles.scss"],
