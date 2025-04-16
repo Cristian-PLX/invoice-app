@@ -1,3 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'global-styles/global' as *;
 @use 'tailwindcss' as *;
-/* Added custom components by utility directive */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  // Colors
+  --color-01: var(--color-01);
+  --color-02: var(--color-02);
+  --color-03: var(--color-03);
+  --color-04: var(--color-04);
+  --color-05: var(--color-05);
+  --color-06: var(--color-06);
+  --color-07: var(--color-07);
+  --color-08: var(--color-08);
+  --color-09: var(--color-09);
+  --color-10: var(--color-10);
+  --color-11: var(--color-11);
+  --color-12: var(--color-12);
+  --color-border-gray: var(--color-border-gray);
+  // Font sizes
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  // Heights
+  --header-height: var(--header-height);
+}
