@@ -1,5 +1,9 @@
-.theme-btn {
+.btn-theme {
   .p-button {
-    @apply bg-transparent hover:bg-transparent;
+    @apply bg-transparent border-none text-07 dark:text-05;
+
+    &:not(:disabled):hover {
+      @apply bg-transparent border-none text-05 dark:text-07;
+    }
   }
 }
