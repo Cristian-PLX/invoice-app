@@ -5,7 +5,7 @@ import { InvoicesState } from '../../models/invoices.state';
 import { EMPTY, exhaustMap, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Invoice } from '../../../domain/models/invoice.interface';
-import { InvoiceHttpRepository } from '../../../infra/repositories/invoice-http.repository';
+import { INVOICE_REPOSITORY } from '../../../ports/invoice.port.token';
 
 const initialState: InvoicesState = {
   pending: false,
@@ -21,7 +21,7 @@ const initialState: InvoicesState = {
 
 @Injectable()
 export class InvoicesListStore extends ComponentStore<InvoicesState> {
-  private invoiceRepository = inject(InvoiceHttpRepository);
+  private invoiceRepository = inject(INVOICE_REPOSITORY);
 
   loading$ = this.select((state) => state.pending);
   pending = this.selectSignal((state) => state.pending);
