@@ -1,11 +1,11 @@
 import { inject, InjectionToken } from '@angular/core';
-import { CartRepository } from './cart.port';
-import { CartHttpRepository } from '../infra/repositories/cart-http.repository';
+import { InvoiceRepository } from './invoice.port';
+import { InvoiceHttpRepository } from '../infra/repositories/invoice-http.repository';
 
-export const CART_REPOSITORY = new InjectionToken<CartRepository>(
-  'CartRepository',
+export const CART_REPOSITORY = new InjectionToken<InvoiceRepository>(
+  'InvoiceRepository',
   {
     providedIn: 'root',
-    factory: () => inject(CartHttpRepository),
+    factory: () => inject(InvoiceHttpRepository),
   }
 );
