@@ -1,6 +1,5 @@
 import { Route } from '@angular/router';
 import { INVOICES_PAGE_CONSTANTS } from '../config';
-import { InvoiceManager } from '../../application/usecases/invoice.manager';
 import { INVOICE_API_PROVIDERS } from '../../infra/api';
 
 export const invoicesRoutes: Route[] = [
