@@ -3,10 +3,10 @@ import {
   InvoicesListStoreSelectorsService,
 } from '../../application/store/invoices';
 import { InvoicesListStore } from '../../application/store/invoices/invoices-list.store';
-import { InvoiceApiFacade } from './invoice-api.facade';
+import { InvoiceManager } from '../../application/usecases/invoice.manager';
 
 export const INVOICE_API_PROVIDERS = [
-  InvoiceApiFacade,
+  InvoiceManager,
   InvoicesListStore,
   InvoicesListStoreActionsService,
   InvoicesListStoreSelectorsService,

@@ -6,10 +6,7 @@ import { INVOICE_API_PROVIDERS } from '../../infra/api';
 export const invoicesRoutes: Route[] = [
   {
     path: INVOICES_PAGE_CONSTANTS.ROUTING.VIEW.ROOT,
-    providers: [
-      { useClass: InvoiceManager, provide: InvoiceManager },
-      ...INVOICE_API_PROVIDERS,
-    ],
+    providers: [...INVOICE_API_PROVIDERS],
     children: [
       {
         path: INVOICES_PAGE_CONSTANTS.ROUTING.VIEW.LIST,

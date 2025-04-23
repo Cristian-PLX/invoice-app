@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InvoiceManager } from '../../../application/usecases/invoice.manager';
-import { InvoiceApiFacade } from '../../../infra/api';
+import { InvoicesListStoreSelectorsService } from '../../../application/store/invoices';
 
 @Component({
   selector: 'lib-invoices-list-template',
@@ -18,8 +18,10 @@ import { InvoiceApiFacade } from '../../../infra/api';
 })
 export class InvoicesListTemplateComponent {
   private invoiceManager = inject(InvoiceManager);
-  private invoiceApiFacade = inject(InvoiceApiFacade);
-  protected invoices = this.invoiceApiFacade.invoices;
+  private invoiceStoreSelector = inject(InvoicesListStoreSelectorsService);
+
+  protected invoices = this.invoiceStoreSelector.invoices;
+
   constructor() {
     effect(() => {
       this.invoiceManager.loadInvoices();

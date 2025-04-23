@@ -1,11 +1,13 @@
 import { inject, Injectable } from '@angular/core';
-import { InvoiceApiFacade } from '../../infra/api';
+import { InvoicesListStoreActionsService } from '../store/invoices';
 
 @Injectable()
 export class InvoiceManager {
-  private invoiceApiFacade = inject(InvoiceApiFacade);
+  private invoiceListStoreActionsService = inject(
+    InvoicesListStoreActionsService
+  );
 
   loadInvoices() {
-    this.invoiceApiFacade.loadInvoices();
+    this.invoiceListStoreActionsService.loadInvoicesList();
   }
 }
