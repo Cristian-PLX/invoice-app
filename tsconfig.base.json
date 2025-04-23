@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -15,6 +17,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@org/invoices": ["apps/libs/invoices/src/index.ts"],
+      "@org/shared": ["apps/libs/shared/src/index.ts"],
       "@org/styles": ["apps/libs/styles/src/index.ts"]
     }
   },
