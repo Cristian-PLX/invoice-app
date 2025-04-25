@@ -3,6 +3,7 @@ import {
   InvoicesListStoreActionsService,
   InvoicesListStoreSelectorsService,
 } from '../../application/store/invoices';
+import { Pagination } from '@org/shared';
 
 @Injectable()
 export class InvoiceApiFacade {
@@ -12,7 +13,7 @@ export class InvoiceApiFacade {
   pending = this.invoiceSelectors.pending;
   invoices = this.invoiceSelectors.invoices;
 
-  loadInvoices() {
-    this.invoiceActions.loadInvoicesList();
+  loadInvoices(pagination: Pagination) {
+    this.invoiceActions.loadInvoicesList(pagination);
   }
 }

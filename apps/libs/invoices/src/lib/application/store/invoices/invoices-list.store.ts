@@ -6,6 +6,7 @@ import { EMPTY, exhaustMap, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Invoice } from '../../../domain/models/invoice.interface';
 import { INVOICE_REPOSITORY } from '../../../ports/invoice.port.token';
+import { Pagination } from '@org/shared';
 
 const initialState: InvoicesState = {
   pending: false,
@@ -39,11 +40,11 @@ export class InvoicesListStore extends ComponentStore<InvoicesState> {
     super(initialState);
   }
 
-  loadInvoicesList = this.effect((trigger$: Observable<void>) =>
+  loadInvoicesList = this.effect((trigger$: Observable<Pagination>) =>
     trigger$.pipe(
       tap(() => this.reducers.startLoadingInvoicesList()),
-      exhaustMap(() =>
-        this.invoiceRepository.getInvoices().pipe(
+      exhaustMap((pagination: Pagination) =>
+        this.invoiceRepository.getInvoices(pagination).pipe(
           tapResponse(
             (invoices: Invoice[]) => this.reducers.invoicesListLoaded(invoices),
             (error: HttpErrorResponse) => {
@@ -59,13 +60,13 @@ export class InvoicesListStore extends ComponentStore<InvoicesState> {
   private reducers = {
     startLoadingInvoicesList: this.updater((state) => ({
       ...state,
-      isDownloading: true,
+      pending: true,
     })),
     invoicesListLoaded: this.updater((state, invoices: Invoice[]) => {
       return {
         ...state,
         data: invoices,
-        isDownloading: false,
+        pending: false,
       };
     }),
   };
