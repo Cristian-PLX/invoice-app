@@ -1,14 +1,14 @@
-@if(virtualItems().length > 0) {
+@if(invoices().length > 0) {
 <p-virtualscroller
-  [items]="virtualItems()"
+  [items]="invoices()"
   [itemSize]="50"
-  [showLoader]="true"
+  [showLoader]="pending()"
   [delay]="150"
   [loading]="pending()"
   [lazy]="true"
   (onLazyLoad)="onLazyLoad($event)"
   styleClass="border border-surface"
-  [style]="{ width: '100%', height: '100px' }"
+  [style]="{ width: '100%', height: '300px' }"
 >
   <ng-template #item let-item let-options="options">
     <div class="flex items-center p-2" style="height: 50px">
@@ -16,8 +16,4 @@
     </div>
   </ng-template>
 </p-virtualscroller>
-@for(item of virtualItems(); track item.id) {
-<div class="flex items-center p-2" style="height: 50px">
-  {{ item.clientName || '' }} (ID: {{ item?.id || '' }})
-</div>
-} }
+}

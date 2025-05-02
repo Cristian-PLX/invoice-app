@@ -2,11 +2,12 @@ import { ComponentStore } from '@ngrx/component-store';
 import { tapResponse } from '@ngrx/operators';
 import { inject, Injectable } from '@angular/core';
 import { InvoicesState } from '../../models/invoices.state';
-import { EMPTY, exhaustMap, Observable, tap } from 'rxjs';
+import { exhaustMap, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Invoice } from '../../../domain/models/invoice.interface';
 import { INVOICE_REPOSITORY } from '../../../ports/invoice.port.token';
-import { Pagination } from '@org/shared';
+import { InvoiceRange } from '@org/shared';
+import { SearchResult } from '../../../domain/models/search-result.interface';
 
 const initialState: InvoicesState = {
   pending: false,
@@ -28,6 +29,7 @@ export class InvoicesListStore extends ComponentStore<InvoicesState> {
   pending = this.selectSignal((state) => state.pending);
   error = this.selectSignal((state) => state.isError);
   data = this.selectSignal((state) => state.data);
+  totalElements = this.selectSignal((state) => state.totalElements);
   dataFiltered = this.selectSignal((state) => state.dataFiltered);
   tableData$ = this.select((state) => ({
     data: state.data,
@@ -40,16 +42,20 @@ export class InvoicesListStore extends ComponentStore<InvoicesState> {
     super(initialState);
   }
 
-  loadInvoicesList = this.effect((trigger$: Observable<Pagination>) =>
+  loadInvoicesList = this.effect((trigger$: Observable<InvoiceRange>) =>
     trigger$.pipe(
-      tap(() => this.reducers.startLoadingInvoicesList()),
-      exhaustMap((pagination: Pagination) =>
-        this.invoiceRepository.getInvoices(pagination).pipe(
+      tap(() => {
+        this.reducers.startLoadingInvoicesList();
+      }),
+      exhaustMap((invoiceRange: InvoiceRange) =>
+        this.invoiceRepository.getInvoiceResults(invoiceRange).pipe(
           tapResponse(
-            (invoices: Invoice[]) => this.reducers.invoicesListLoaded(invoices),
+            (result: SearchResult<Invoice>) => {
+              this.reducers.invoicesLazyListLoaded({ result, invoiceRange });
+            },
             (error: HttpErrorResponse) => {
               console.error('Error loading invoices:', error);
-              return EMPTY;
+              this.reducers.stopLoadingInvoicesList();
             }
           )
         )
@@ -62,10 +68,44 @@ export class InvoicesListStore extends ComponentStore<InvoicesState> {
       ...state,
       pending: true,
     })),
-    invoicesListLoaded: this.updater((state, invoices: Invoice[]) => {
+    stopLoadingInvoicesList: this.updater((state) => ({
+      ...state,
+      pending: false,
+    })),
+    invoicesLazyListLoaded: this.updater(
+      (
+        state,
+        {
+          result,
+          invoiceRange,
+        }: { result: SearchResult<Invoice>; invoiceRange: InvoiceRange }
+      ) => {
+        const requiredInvoices = [...result.data];
+        const total = result.total;
+        const { startIndex, endIndex } = invoiceRange;
+
+        let lazyInvoices = [...state.data];
+        if (!lazyInvoices.length && total) {
+          lazyInvoices = [...lazyInvoices, ...Array(total).fill(null)];
+        }
+
+        for (let i = startIndex, x = 0; i < endIndex; i++, x++) {
+          lazyInvoices[i] = requiredInvoices[x];
+        }
+
+        return {
+          ...state,
+          data: lazyInvoices,
+          totalElements: total,
+          pending: false,
+        };
+      }
+    ),
+    invoicesListLoaded: this.updater((state, result: SearchResult<Invoice>) => {
       return {
         ...state,
-        data: invoices,
+        data: result.data,
+        totalElements: result.total,
         pending: false,
       };
     }),

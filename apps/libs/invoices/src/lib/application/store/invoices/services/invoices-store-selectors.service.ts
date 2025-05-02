@@ -7,6 +7,7 @@ export class InvoicesListStoreSelectorsService {
 
   loading$ = this.store.loading$;
   invoices = this.store.data;
+  totalElements = this.store.totalElements;
   pending = this.store.pending;
   error = this.store.error;
   tableData$ = this.store.tableData$;

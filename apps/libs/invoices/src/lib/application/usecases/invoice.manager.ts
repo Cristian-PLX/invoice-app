@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { InvoicesListStoreActionsService } from '../store/invoices';
-import { Pagination } from '@org/shared';
+import { InvoiceRange } from '@org/shared';
 
 @Injectable()
 export class InvoiceManager {
@@ -8,7 +8,7 @@ export class InvoiceManager {
     InvoicesListStoreActionsService
   );
 
-  loadInvoices(pagination: Pagination) {
-    this.invoiceListStoreActionsService.loadInvoicesList(pagination);
+  loadInvoices(invoiceRange: InvoiceRange) {
+    this.invoiceListStoreActionsService.loadInvoicesList(invoiceRange);
   }
 }

@@ -1,1 +1,1 @@
-export * from './pagination.model';
+export * from './invoice-range.model';

@@ -1,7 +1,11 @@
 import { Observable } from 'rxjs';
 import { Invoice } from '../domain/models/invoice.interface';
-import { Pagination } from '@org/shared';
+import { InvoiceRange } from '@org/shared';
+import { SearchResult } from '../domain/models/search-result.interface';
 
 export interface InvoiceRepository {
-  getInvoices(pagination: Pagination): Observable<Invoice[]>;
+  getInvoices(invoiceRange: InvoiceRange): Observable<Invoice[]>;
+  getInvoiceResults(
+    invoiceRange: InvoiceRange
+  ): Observable<SearchResult<Invoice>>;
 }
