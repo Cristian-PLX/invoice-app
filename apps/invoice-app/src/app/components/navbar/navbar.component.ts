@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
+import { AssetsUtils, Image } from '@org/shared';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,10 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
+
+  protected logoPath = AssetsUtils.getImageUrl(Image.LOGO, 'svg');
+  protected avatarPath = AssetsUtils.getImageUrl(Image.AVATAR, 'jpg');
+
   toggleTheme(): void {
     const html = document.documentElement;
     const isDark = html.classList.contains('dark');

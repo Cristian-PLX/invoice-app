@@ -10,6 +10,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 
+import { APP_CONFIG, APP_CONSTANTS } from '@org/shared';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
@@ -21,5 +23,6 @@ export const appConfig: ApplicationConfig = {
         preset: Aura,
       },
     }),
+    { provide: APP_CONFIG, useValue: APP_CONSTANTS },
   ],
 };
