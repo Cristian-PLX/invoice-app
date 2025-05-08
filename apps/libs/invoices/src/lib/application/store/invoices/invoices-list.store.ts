@@ -86,7 +86,7 @@ export class InvoicesListStore extends ComponentStore<InvoicesState> {
 
         let lazyInvoices = [...state.data];
         if (!lazyInvoices.length && total) {
-          lazyInvoices = [...lazyInvoices, ...Array(total).fill(null)];
+          lazyInvoices = Array(total).fill(null);
         }
 
         for (let i = startIndex, x = 0; i < endIndex; i++, x++) {

@@ -9,7 +9,7 @@ import {
   ScrollerModule,
   ScrollerScrollIndexChangeEvent,
 } from 'primeng/scroller';
-import { InvoiceManager } from '../../../application/usecases/invoice.manager';
+import { InvoicesListManager } from '../../../application/usecases/invoices-list.manager';
 import { InvoicesListStoreSelectorsService } from '../../../application/store/invoices';
 import { Invoice } from '../../../domain/models/invoice.interface';
 import { CommonModule } from '@angular/common';
@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InvoicesListTemplateComponent implements OnInit {
-  private invoiceManager = inject(InvoiceManager);
+  private invoiceManager = inject(InvoicesListManager);
   private invoiceStoreSelector = inject(InvoicesListStoreSelectorsService);
 
   protected pending = this.invoiceStoreSelector.pending;

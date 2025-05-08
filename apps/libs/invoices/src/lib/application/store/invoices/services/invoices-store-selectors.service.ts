@@ -1,14 +1,12 @@
 import { inject, Injectable } from '@angular/core';
-import { InvoicesListStore } from '../invoices-list.store';
+import { InvoicesStore } from '../invoices.store';
 
 @Injectable()
-export class InvoicesListStoreSelectorsService {
-  private store = inject(InvoicesListStore);
+export class InvoicesStoreSelectorsService {
+  private store = inject(InvoicesStore);
 
   loading$ = this.store.loading$;
-  invoices = this.store.data;
-  totalElements = this.store.totalElements;
+  invoice = this.store.invoice;
   pending = this.store.pending;
   error = this.store.error;
-  tableData$ = this.store.tableData$;
 }
