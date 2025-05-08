@@ -1,25 +1,38 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { appRoutes } from './app.routes';
-import {
-  provideClientHydration,
-  withEventReplay,
-} from '@angular/platform-browser';
+import { InjectionToken } from '@angular/core';
+import { Languages, TranslocoLanguage } from './core/models/languages';
+export interface AppConfig {
+  ROUTING: {
+    VIEW: {
+      ROOT: string;
+    };
+  };
+  LANGUAGE: {
+    AVAILABLE_LANGUAGES: readonly TranslocoLanguage[];
+    DEFAULT_LANGUAGE: TranslocoLanguage;
+    FALLBACK_LANGUAGES: Map<TranslocoLanguage, TranslocoLanguage>;
+  };
+}
 
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
+export const AVAILABLE_LANGUAGES = [
+  Languages.EN,
+  Languages.ES,
+  Languages.CAT,
+] as const;
 
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideClientHydration(withEventReplay()),
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(appRoutes, withComponentInputBinding()),
-    provideAnimationsAsync(),
-    providePrimeNG({
-      theme: {
-        preset: Aura,
-      },
-    }),
-  ],
+export const APP_CONSTANTS: AppConfig = {
+  ROUTING: {
+    VIEW: {
+      ROOT: '',
+    },
+  },
+  LANGUAGE: {
+    AVAILABLE_LANGUAGES: AVAILABLE_LANGUAGES,
+    DEFAULT_LANGUAGE: AVAILABLE_LANGUAGES[0],
+    FALLBACK_LANGUAGES: new Map<TranslocoLanguage, TranslocoLanguage>().set(
+      AVAILABLE_LANGUAGES[0],
+      AVAILABLE_LANGUAGES[0]
+    ),
+  },
 };
+
+export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');

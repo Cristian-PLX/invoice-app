@@ -1,5 +1,9 @@
 import { Route } from '@angular/router';
-import { APP_CONSTANTS, LAYOUT_CONSTANTS } from '@org/shared';
+import { LAYOUT_CONSTANTS } from '@org/shared';
+
+import { provideTranslocoScope } from '@jsverse/transloco';
+import { TranslocoScopes } from './core/models/languages';
+import { APP_CONSTANTS } from './app.config';
 
 export const appRoutes: Route[] = [
   {
@@ -15,6 +19,12 @@ export const appRoutes: Route[] = [
       import('./pages/not-found-page/not-found-page.component').then(
         (c) => c.NotFoundPageComponent
       ),
+    providers: [
+      provideTranslocoScope(TranslocoScopes.NOT_FOUND, {
+        scope: TranslocoScopes.NOT_FOUND,
+        alias: TranslocoScopes.NOT_FOUND,
+      }),
+    ],
   },
   {
     path: '**',
