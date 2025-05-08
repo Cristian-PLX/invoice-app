@@ -8,4 +8,5 @@ export interface InvoiceRepository {
   getInvoiceResults(
     invoiceRange: InvoiceRange
   ): Observable<SearchResult<Invoice>>;
+  getInvoiceById(invoiceId: string): Observable<Invoice>;
 }

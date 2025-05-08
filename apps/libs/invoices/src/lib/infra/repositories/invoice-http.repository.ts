@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 import invoicesMock from '../mocks/invoices-100-mock.json' assert { type: 'json' };
 import { HttpClient } from '@angular/common/http';
@@ -48,5 +48,25 @@ export class InvoiceHttpRepository implements InvoiceRepository {
     };
 
     return of(result).pipe(delay(1000));
+  }
+
+  getInvoiceById(invoiceId: string): Observable<Invoice> {
+    let invoice = invoicesMock
+      .map((invoice) => ({
+        ...invoice,
+        paymentDue: new Date(invoice.paymentDue),
+      }))
+      .find((invoice) => invoice.id === invoiceId);
+
+    if (!invoice) {
+      throw new Error('Invoice not found');
+    }
+
+    invoice = {
+      ...invoice,
+      paymentDue: new Date(invoice.paymentDue),
+    };
+
+    return of(invoice).pipe(delay(1000));
   }
 }

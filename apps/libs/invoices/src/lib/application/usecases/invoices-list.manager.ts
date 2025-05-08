@@ -3,7 +3,7 @@ import { InvoicesListStoreActionsService } from '../store/invoices';
 import { InvoiceRange } from '@org/shared';
 
 @Injectable()
-export class InvoiceManager {
+export class InvoicesListManager {
   private invoiceListStoreActionsService = inject(
     InvoicesListStoreActionsService
   );
