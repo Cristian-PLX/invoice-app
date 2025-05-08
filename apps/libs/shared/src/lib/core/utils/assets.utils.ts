@@ -1,15 +1,15 @@
 import { inject } from '@angular/core';
 
-import { APP_CONFIG} from '../';
+import { CORE_CONFIG } from '../';
 import { Image } from '../enums';
 
 export class AssetsUtils {
-  static getImageUrl(imageName: Image, extension:string): string {
-    const appConfig = inject(APP_CONFIG);
+  static getImageUrl(imageName: Image, extension: string): string {
+    const coreConfig = inject(CORE_CONFIG);
 
-    return appConfig.IMAGE_PATH
-      .replace('{imageName}', imageName)
-      .replace('{extension}', extension);
+    return coreConfig.IMAGE_PATH.replace('{imageName}', imageName).replace(
+      '{extension}',
+      extension
+    );
   }
 }
-

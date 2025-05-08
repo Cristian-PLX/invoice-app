@@ -1,8 +1,8 @@
-import { InjectionToken } from "@angular/core";
+import { InjectionToken } from '@angular/core';
 
 export const IMAGE_PATH = './images';
 
-export interface AppConfig {
+export interface CoreConfig {
   IMAGE_PATH: string;
   ROUTING: {
     VIEW: {
@@ -11,13 +11,13 @@ export interface AppConfig {
   };
 }
 
-export const APP_CONSTANTS: AppConfig = {
+export const CORE_CONSTANTS: CoreConfig = {
   IMAGE_PATH: `${IMAGE_PATH}/{imageName}.{extension}`,
   ROUTING: {
     VIEW: {
       ROOT: '',
     },
   },
-};
+} as const;
 
-export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
+export const CORE_CONFIG = new InjectionToken<CoreConfig>('app.config');
