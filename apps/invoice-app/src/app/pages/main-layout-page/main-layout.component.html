@@ -1,7 +1,9 @@
-<div class="bg-11 h-screen lg:flex">
+<div
+  class="bg-11 h-screen grid grid-cols-[1fr] grid-rows-[auto_1fr] lg:grid-cols-[auto_1fr] lg:grid-rows-[1fr]"
+>
   <header>
     <app-navbar></app-navbar>
   </header>
 
-  <router-outlet></router-outlet>
+  <router-outlet class="hidden"></router-outlet>
 </div>

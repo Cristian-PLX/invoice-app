@@ -1,11 +1,3 @@
-// import { bootstrapApplication } from '@angular/platform-browser';
-// import { appConfig, AVAILABLE_LANGUAGES } from './app/app.config';
-// import { AppComponent } from './app/app.component';
-
-// bootstrapApplication(AppComponent, appConfig).catch((err) =>
-//   console.error(err)
-// );
-
 import { registerLocaleData } from '@angular/common';
 import localeCa from '@angular/common/locales/en';
 import localeEn from '@angular/common/locales/en';
