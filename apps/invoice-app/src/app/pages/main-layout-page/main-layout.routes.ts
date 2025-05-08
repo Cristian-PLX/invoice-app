@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { LAYOUT_CONSTANTS } from '@org/shared';
+import { LAYOUT_CONFIG, LAYOUT_CONSTANTS } from '@org/shared';
 
 import { MainLayoutComponent } from './main-layout.component';
 
@@ -9,7 +9,7 @@ export const appRoutes: Route[] = [
     component: MainLayoutComponent,
     providers: [
       {
-        provide: LAYOUT_CONSTANTS,
+        provide: LAYOUT_CONFIG,
         useValue: LAYOUT_CONSTANTS,
       },
     ],

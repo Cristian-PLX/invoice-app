@@ -1,4 +1,5 @@
 import { InjectionToken } from '@angular/core';
+
 export const LAYOUT_CONSTANTS = {
   ROUTING: {
     VIEW: {
@@ -14,6 +15,11 @@ export const LAYOUT_CONSTANTS = {
       NOT_FOUND: '404',
     },
     PARTS: { EDITION: 'edition', REGISTRATION: 'registration' },
+    LANGUAGES: [
+      { label: 'CA', code: 'ca' },
+      { label: 'EN', code: 'en' },
+      { label: 'ES', code: 'es' },
+    ],
   },
 } as const;
 export const LAYOUT_CONFIG = new InjectionToken<typeof LAYOUT_CONSTANTS>(
