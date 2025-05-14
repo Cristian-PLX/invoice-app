@@ -1,0 +1,16 @@
+export enum InvoiceStatus {
+  PENDING = 'pending',
+  PAID = 'paid',
+  DRAFT = 'draft',
+  CANCELLED = 'cancelled',
+  REJECTED = 'rejected',
+  APPROVED = 'approved',
+  ARCHIVED = 'archived',
+  COMPLETED = 'completed',
+  IN_PROGRESS = 'in-progress',
+  OVERDUE = 'overdue',
+  FAILED = 'failed',
+  REFUNDED = 'refunded',
+  DISPUTED = 'disputed',
+  CHARGEBACK = 'chargeback',
+}

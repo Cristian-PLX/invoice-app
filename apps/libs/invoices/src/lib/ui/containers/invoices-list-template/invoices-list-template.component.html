@@ -1,19 +1,46 @@
 @if(invoices().length > 0) {
 <p-virtualscroller
   [items]="invoices()"
-  [itemSize]="50"
+  [itemSize]="104"
   [showLoader]="pending()"
   [delay]="150"
   [loading]="pending()"
   [lazy]="true"
   (onLazyLoad)="onLazyLoad($event)"
-  styleClass="border border-surface"
-  [style]="{ width: '100%', height: '300px' }"
+  class="w-full h-full"
 >
   <ng-template #item let-item let-options="options">
-    <div class="flex items-center p-2 w-full" style="height: 50px">
-      {{ item?.clientName || '' }} (ID: {{ item?.id || '' }})
+    @if(item){
+    <div
+      class="grid grid-cols-[repeat(2,_98px)_auto_1fr_90px] items-center gap-x-11 bg-white dark:bg-gray-800 rounded-lg p-6 ml-5 mr-5 mb-4 ring shadow-xl ring-gray-900/5"
+    >
+      <p class="font-bold text-[15px] leading-[1]">#{{ item?.id || '' }}</p>
+      <p
+        class="text-[13px] leading-[1] text-left font-medium text-[#858BB2] dark:text-white"
+      >
+        {{ item?.createdAt }}
+      </p>
+      <p class="text-[#858BB2] font-medium text-[13px] dark:text-white">
+        {{ item?.clientName }}
+      </p>
+      <p class="text-right font-bold">{{ item?.total }}€</p>
+      @if(item?.status === INVOICE_STATUS.PAID){
+      <!-- <p
+        class="px-4 py-3 text-[15px] font-bold leading-[1] text-center bg-green-50 dark:bg-green-800 text-green-700 dark:text-green-300 rounded-lg capitalize"
+      >
+        <i class="pi pi-circle-on"></i>{{ item?.status }}
+      </p> -->
+      <p-button label="Paid" [raised]="true" severity="success" />
+
+      } @else if(item?.status === INVOICE_STATUS.PENDING) {
+      <p
+        class="px-4 py-3 text-[15px] font-bold leading-[1] text-center bg-amber-50 dark:bg-amber-800 text-amber-700 dark:text-amber-300 rounded-lg capitalize"
+      >
+        <i class="pi pi-circle-on"></i> {{ item?.status }}
+      </p>
+      }
     </div>
+    }
   </ng-template>
 </p-virtualscroller>
 }

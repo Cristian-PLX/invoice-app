@@ -58,15 +58,19 @@
     "@nx/angular:application": {
       "e2eTestRunner": "cypress",
       "linter": "eslint",
-      "style": "css",
+      "style": "scss",
       "unitTestRunner": "jest"
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "none"
+      "unitTestRunner": "none",
+      "changeDetection": "OnPush",
+      "standalone": "true"
     },
     "@nx/angular:component": {
-      "style": "css"
+      "changeDetection": "OnPush",
+      "standalone": "true",
+      "style": "scss"
     }
   }
 }

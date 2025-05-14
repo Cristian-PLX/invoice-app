@@ -9,15 +9,19 @@ import {
   ScrollerModule,
   ScrollerScrollIndexChangeEvent,
 } from 'primeng/scroller';
+import { ButtonModule } from 'primeng/button';
+import { CommonModule } from '@angular/common';
+
 import { InvoicesListManager } from '../../../application/usecases/invoices-list.manager';
 import { InvoicesListStoreSelectorsService } from '../../../application/store/invoices';
 import { Invoice } from '../../../domain/models/invoice.interface';
-import { CommonModule } from '@angular/common';
+import { InvoiceStatus } from '@org/shared';
 
 @Component({
   selector: 'lib-invoices-list-template',
   templateUrl: './invoices-list-template.component.html',
-  imports: [CommonModule, ScrollerModule],
+  styleUrls: ['./invoices-list-template.component.css'],
+  imports: [CommonModule, ScrollerModule, ButtonModule],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -29,8 +33,10 @@ export class InvoicesListTemplateComponent implements OnInit {
   protected invoices = this.invoiceStoreSelector.invoices;
   protected totalElements = this.invoiceStoreSelector.totalElements;
 
-  protected readonly loadSize = 8;
+  protected readonly loadSize = 20;
   protected virtualItems = signal<(Invoice | null)[]>([]);
+
+  protected readonly INVOICE_STATUS = InvoiceStatus;
 
   ngOnInit(): void {
     this.invoiceManager.loadInvoices({
