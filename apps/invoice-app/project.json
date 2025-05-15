@@ -15,7 +15,7 @@
         "index": "apps/invoice-app/src/index.html",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/invoice-app/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
+        "inlineStyleLanguage": "css",
         "assets": [
           {
             "glob": "**/*",
@@ -27,7 +27,7 @@
             "output": "public"
           }
         ],
-        "styles": ["apps/invoice-app/src/styles.scss"],
+        "styles": ["apps/invoice-app/src/styles.css"],
         "stylePreprocessorOptions": {
           "includePaths": ["apps/libs/styles/src"]
         },
