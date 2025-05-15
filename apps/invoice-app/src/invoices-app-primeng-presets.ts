@@ -413,6 +413,12 @@ const invoicesAppPrimeNgPreset = definePreset(Aura, {
           '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
       },
     },
+    tag: {
+      success: {
+        background: '{primary.50}',
+        color: 'var(--inv-color-text-success)',
+      },
+    },
     colorScheme: {
       light: {
         surface: {
@@ -538,6 +544,12 @@ const invoicesAppPrimeNgPreset = definePreset(Aura, {
             activeColor: '{surface.500}',
           },
         },
+        tag: {
+          success: {
+            background: 'var(--inv-color-background-success)',
+            color: 'var(--inv-color-text-success)',
+          },
+        },
       },
       dark: {
         surface: {
@@ -661,6 +673,12 @@ const invoicesAppPrimeNgPreset = definePreset(Aura, {
             color: '{surface.500}',
             focusColor: '{surface.400}',
             activeColor: '{surface.400}',
+          },
+        },
+        tag: {
+          success: {
+            background: 'var(--inv-color-background-success)',
+            color: 'var(--inv-color-text-success)',
           },
         },
       },

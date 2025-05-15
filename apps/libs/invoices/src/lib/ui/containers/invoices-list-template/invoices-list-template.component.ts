@@ -10,6 +10,7 @@ import {
   ScrollerScrollIndexChangeEvent,
 } from 'primeng/scroller';
 import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
 import { CommonModule } from '@angular/common';
 
 import { InvoicesListManager } from '../../../application/usecases/invoices-list.manager';
@@ -21,7 +22,7 @@ import { InvoiceStatus } from '@org/shared';
   selector: 'lib-invoices-list-template',
   templateUrl: './invoices-list-template.component.html',
   styleUrls: ['./invoices-list-template.component.css'],
-  imports: [CommonModule, ScrollerModule, ButtonModule],
+  imports: [CommonModule, ScrollerModule, ButtonModule, TagModule],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -25,17 +25,30 @@
       </p>
       <p class="text-right font-bold">{{ item?.total }}€</p>
       @if(item?.status === INVOICE_STATUS.PAID){
-      <p
+      <!-- <p
         class="px-4 py-3 text-[15px] font-bold leading-[1] text-center bg-green-50 dark:bg-green-800 text-green-700 dark:text-green-300 rounded-lg capitalize"
       >
         <i class="pi pi-circle-on"></i>{{ item?.status }}
-      </p>
+      </p> -->
+      <p-tag
+        class="text-[15px]"
+        icon="pi pi-circle-on"
+        severity="success"
+        value="Success"
+      />
+
       } @else if(item?.status === INVOICE_STATUS.PENDING) {
-      <p
+      <!-- <p
         class="px-4 py-3 text-[15px] font-bold leading-[1] text-center bg-amber-50 dark:bg-amber-800 text-amber-700 dark:text-amber-300 rounded-lg capitalize"
       >
         <i class="pi pi-circle-on"></i> {{ item?.status }}
-      </p>
+      </p> -->
+      <p-tag
+        class="text-[15px]"
+        icon="pi pi-circle-on"
+        severity="warn"
+        value="Warn"
+      />
       }
     </div>
     }
