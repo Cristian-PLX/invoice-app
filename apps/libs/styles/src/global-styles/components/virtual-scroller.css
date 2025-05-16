@@ -1,5 +1,5 @@
 p-virtualscroller {
   p {
-    @apply whitespace-nowrap overflow-hidden text-ellipsis;
+    @apply leading-[1] whitespace-nowrap overflow-hidden text-ellipsis;
   }
 }

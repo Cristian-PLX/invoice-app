@@ -1,7 +1,7 @@
 @if(invoices().length > 0) {
 <p-virtualscroller
   [items]="invoices()"
-  [itemSize]="100"
+  [itemSize]="107"
   [showLoader]="pending()"
   [delay]="150"
   [loading]="pending()"
@@ -12,11 +12,11 @@
   <ng-template #item let-item let-options="options">
     @if(item){
     <div
-      class="grid grid-cols-[repeat(2,_98px)_auto_1fr_90px] items-center gap-x-11 bg-white dark:bg-gray-800 rounded-lg p-6 ml-5 mr-5 mb-4 ring shadow-xl ring-gray-900/5"
+      class="grid grid-cols-[repeat(2,_98px)_auto_minmax(50px,1fr)_90px] items-center gap-x-11 bg-white dark:bg-gray-800 rounded-lg p-6 ml-5 mr-5 mb-4 ring shadow-xl ring-gray-900/5"
     >
-      <p class="font-bold text-[15px] leading-[1]">#{{ item?.id || '' }}</p>
+      <p class="font-bold text-[15px] leading-none">#{{ item?.id || '' }}</p>
       <p
-        class="text-[13px] leading-[1] text-left font-medium text-[#858BB2] dark:text-white"
+        class="text-[13px] leading-none text-left font-medium text-[#858BB2] dark:text-white"
       >
         {{ item?.createdAt }}
       </p>

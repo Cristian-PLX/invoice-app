@@ -1,9 +1,8 @@
 .p-tag {
-  @apply leading-1 flex items-center justify-center pt-[12px] pb-[12px];
+  @apply leading-none flex items-center justify-center pt-[14px] pb-[14px];
 }
 .p-tag-icon {
-  @apply leading-1;
-  font-size: var(--font-size-3xs);
+  @apply leading-none text-3xs;
 
   &.pi {
     @apply flex items-center justify-center;
