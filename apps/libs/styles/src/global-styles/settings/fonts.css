@@ -1,7 +1,10 @@
 :root {
-  --font-size-sm: 0.8125rem; /* 13px */
-  --font-size-base: 0.9375rem; /* 15px */
-  --font-size-md: 1.25rem; /* 20px */
-  --font-size-lg: 1.5rem; /* 24px */
-  --font-size-xl: 2.25rem; /* 36px */
+  --font-size-3xs: calc(7 * var(--px-to-rem)); /* 7px */
+  --font-size-2xs: calc(9 * var(--px-to-rem)); /* 9px */
+  --font-size-xs: calc(11 * var(--px-to-rem)); /* 11px */
+  --font-size-sm: calc(13 * var(--px-to-rem)); /* 13px */
+  --font-size-base: calc(15 * var(--px-to-rem)); /* 15px */
+  --font-size-md: calc(20 * var(--px-to-rem)); /* 20px */
+  --font-size-lg: calc(24 * var(--px-to-rem)); /* 24px */
+  --font-size-xl: calc(36 * var(--px-to-rem)); /* 36px */
 }

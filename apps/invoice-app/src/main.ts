@@ -31,6 +31,7 @@ bootstrapApplication(AppComponent, {
       theme: {
         preset: invoicesAppPrimeNgPreset,
         options: {
+          darkModeSelector: '.dark',
           cssLayer: {
             name: 'primeng',
             order: 'theme, base, primeng',

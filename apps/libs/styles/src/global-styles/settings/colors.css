@@ -2,6 +2,9 @@
   --inv-color-text-success: rgb(51, 214, 159);
   --inv-color-background-success: rgb(51, 214, 159, 0.0571);
 
+  --inv-color-text-warning: rgb(255, 143, 0);
+  --inv-color-background-warning: rgb(255, 143, 0, 0.0571);
+
   --color-01: #7c5dfa;
   --color-02: #9277ff;
   --color-03: #1e2139;

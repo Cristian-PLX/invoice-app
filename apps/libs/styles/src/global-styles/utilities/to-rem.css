@@ -1,0 +1,10 @@
+:root {
+  --base-font-size: 16;
+  --px-to-rem: calc(1rem / var(--base-font-size));
+}
+
+/****
+EJEMPLO DE USO:
+
+  font-size: calc(32 * var(--px-to-rem)); /* 32px → 2rem
+*****/

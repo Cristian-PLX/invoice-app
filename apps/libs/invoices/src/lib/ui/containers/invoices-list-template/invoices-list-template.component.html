@@ -1,7 +1,7 @@
 @if(invoices().length > 0) {
 <p-virtualscroller
   [items]="invoices()"
-  [itemSize]="104"
+  [itemSize]="100"
   [showLoader]="pending()"
   [delay]="150"
   [loading]="pending()"
@@ -25,29 +25,19 @@
       </p>
       <p class="text-right font-bold">{{ item?.total }}€</p>
       @if(item?.status === INVOICE_STATUS.PAID){
-      <!-- <p
-        class="px-4 py-3 text-[15px] font-bold leading-[1] text-center bg-green-50 dark:bg-green-800 text-green-700 dark:text-green-300 rounded-lg capitalize"
-      >
-        <i class="pi pi-circle-on"></i>{{ item?.status }}
-      </p> -->
       <p-tag
-        class="text-[15px]"
+        class="text-[15px] capitalize"
         icon="pi pi-circle-on"
         severity="success"
-        value="Success"
+        [value]="INVOICE_STATUS.PAID"
       />
 
       } @else if(item?.status === INVOICE_STATUS.PENDING) {
-      <!-- <p
-        class="px-4 py-3 text-[15px] font-bold leading-[1] text-center bg-amber-50 dark:bg-amber-800 text-amber-700 dark:text-amber-300 rounded-lg capitalize"
-      >
-        <i class="pi pi-circle-on"></i> {{ item?.status }}
-      </p> -->
       <p-tag
-        class="text-[15px]"
+        class="text-[15px] capitalize"
         icon="pi pi-circle-on"
         severity="warn"
-        value="Warn"
+        [value]="INVOICE_STATUS.PENDING"
       />
       }
     </div>

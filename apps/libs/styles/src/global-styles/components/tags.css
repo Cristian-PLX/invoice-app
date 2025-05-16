@@ -1,0 +1,11 @@
+.p-tag {
+  @apply leading-1 flex items-center justify-center pt-[12px] pb-[12px];
+}
+.p-tag-icon {
+  @apply leading-1;
+  font-size: var(--font-size-3xs);
+
+  &.pi {
+    @apply flex items-center justify-center;
+  }
+}

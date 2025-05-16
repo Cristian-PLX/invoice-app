@@ -2,6 +2,52 @@ import { definePreset } from '@primeng/themes';
 import Aura from '@primeng/themes/aura';
 
 const invoicesAppPrimeNgPreset = definePreset(Aura, {
+  components: {
+    tag: {
+      colorScheme: {
+        dark: {
+          success: {
+            background: 'var(--inv-color-background-success)',
+            color: 'var(--inv-color-text-success)',
+          },
+          warn: {
+            background: 'var(--inv-color-background-warning)',
+            color: 'var(--inv-color-text-warning)',
+          },
+        },
+        light: {
+          primary: {
+            background: '{primary.100}',
+            color: '{primary.700}',
+          },
+          secondary: {
+            background: '{surface.100}',
+            color: '{surface.600}',
+          },
+          success: {
+            background: 'var(--inv-color-background-success)',
+            color: 'var(--inv-color-text-success)',
+          },
+          info: {
+            background: '{sky.100}',
+            color: '{sky.700}',
+          },
+          warn: {
+            background: 'var(--inv-color-background-warning)',
+            color: 'var(--inv-color-text-warning)',
+          },
+          danger: {
+            background: '{red.100}',
+            color: '{red.700}',
+          },
+          contrast: {
+            background: '{surface.950}',
+            color: '{surface.0}',
+          },
+        },
+      },
+    },
+  },
   theme: {
     fontFamily: {
       sans: 'League Spartan',
@@ -538,12 +584,6 @@ const invoicesAppPrimeNgPreset = definePreset(Aura, {
             activeColor: '{surface.500}',
           },
         },
-        tag: {
-          success: {
-            background: 'var(--inv-color-background-success)',
-            color: 'var(--inv-color-text-success)',
-          },
-        },
       },
       dark: {
         surface: {
@@ -667,12 +707,6 @@ const invoicesAppPrimeNgPreset = definePreset(Aura, {
             color: '{surface.500}',
             focusColor: '{surface.400}',
             activeColor: '{surface.400}',
-          },
-        },
-        tag: {
-          success: {
-            background: 'var(--inv-color-background-success)',
-            color: 'var(--inv-color-text-success)',
           },
         },
       },
